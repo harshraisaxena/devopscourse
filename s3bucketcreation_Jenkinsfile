@@ -3,20 +3,17 @@ pipeline {
 
     environment {
         AWS_DEFAULT_REGION = 'us-east-1'
-        BUCKET_NAME = 'bucketjenkinsawss3783862'
+        BUCKET_NAME = 'bucketjenkinsawss37838621221'
     }
 
     stages {
         stage('Create S3 Bucket') {
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', 
-                                  credentialsId: 'aws-credentials']]) {
-                    sh """
-                        aws s3api create-bucket \
-                        --bucket $BUCKET_NAME \
-                        --region $AWS_DEFAULT_REGION
-                    """
-                }
+                sh """
+                    aws s3api create-bucket \
+                    --bucket $BUCKET_NAME \
+                    --region $AWS_DEFAULT_REGION
+                """
             }
         }
     }
